@@ -47,11 +47,11 @@ class Project
     end
     list_volunteers
   end
-#
-#   def update(attributes)
-#      @name = attributes.fetch(:name)
-#      @id = self.id()
-#      DB.exec("UPDATE lists SET name = '#{@name}' WHERE id = #{@id};")
-#    end
-#
+
+  def update(attributes)
+     @title = attributes.fetch(:title)
+     @id = self.id()
+     DB.exec("UPDATE projects SET title = '#{@title}' WHERE id = #{@id};")
+   end
+
 end
