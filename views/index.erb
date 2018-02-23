@@ -21,3 +21,18 @@
     </div>
   </form>
 </div>
+
+<% if @projects.any?() %>
+  <% if @volunteers.any?() %>
+    <h3>Here are your Volunteers:</h3>
+    <ul>
+      <% @volunteers.each() do |volunteer| %>
+        <li><a href="volunteers/<%= volunteer.id()%>"><%= volunteer.name() %></a></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>You have no volunteers</p>
+  <% end %>
+<% else %>
+  <p>Volunteers can be added to projects after one exists.<br> Please create one above:</p>
+<% end %>

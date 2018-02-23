@@ -12,6 +12,7 @@ DB = PG.connect({:dbname => "volunteer_tracker_test"})
 
 get("/") do
   @projects = Project.all()
+  @volunteers = Volunteer.all()
   erb(:index)
 end
 
@@ -25,6 +26,11 @@ end
 get("/projects/:id") do
   @projects = Project.find(params.fetch("id").to_i())
   erb(:project)
+end
+
+get("/volunteers/:id") do
+  @volunteers = Volunteer.find(params.fetch("id").to_i())
+  erb(:volunteer)
 end
 
 
