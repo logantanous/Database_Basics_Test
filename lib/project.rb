@@ -58,4 +58,14 @@ class Project
     DB.exec("DELETE FROM projects WHERE id = #{self.id()};")
   end
 
+  def self.find(id)
+    found_list = nil
+    Project.all().each() do |project|
+      if project.id().==(id)
+        found_list = list
+      end
+    end
+    found_list
+  end
+
 end

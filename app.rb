@@ -11,9 +11,23 @@ require("pry")
 DB = PG.connect({:dbname => "volunteer_tracker_test"})
 
 get("/") do
-  @lists = List.all()
+  @projects = Project.all()
   erb(:index)
 end
+
+post("/project_success") do
+  title = params.fetch("title")
+  @project = Project.new({:title => title, :id => nil})
+  @project.save()
+  erb(:project_success)
+end
+
+# get("/project_success") do
+#   title = params.fetch("title")
+#   @list = Project.find(title)
+#   @task = Project.new({:title => title, :list_id => list_id})
+#   erb(:index)
+# end
 #
 # get("/lists/new") do
 #   erb(:list_form)

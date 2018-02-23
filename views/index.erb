@@ -1,0 +1,23 @@
+<h1>Welcome to the To Do App</h1>
+
+
+<% if @projects.any?() %>
+<h3>Here are your Projects:</h3>
+  <ul>
+    <% @projects.each() do |project| %>
+      <li><%= project.title() %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Create a Project Below:</p>
+<% end %>
+
+<div class="container">
+  <form action="/project_success" method="post">
+    <div class="form-group">
+      <label class="form-label" for='name'>Assign a title to your project:</label>
+      <input class="form-control" id='title' name='title' type='text' placeholder="Project Name" autofocus>
+      <button type="submit" class="button btn">Create Project</button>
+    </div>
+  </form>
+</div>
