@@ -1,4 +1,4 @@
-# class List
+# class Volunteer
 #   attr_reader(:name, :id)
 #
 #   def initialize(attributes)
