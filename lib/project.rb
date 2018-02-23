@@ -35,17 +35,18 @@ class Project
     end
     found_list
   end
-#
-#   def tasks
-#     list_tasks = []
-#     tasks = DB.exec("SELECT * FROM tasks WHERE list_id = #{self.id()};")
-#     tasks.each() do |task|
-#       description = task.fetch("description")
-#       list_id = task.fetch("list_id").to_i()
-#       list_tasks.push(Task.new({:description => description, :list_id => list_id}))
-#     end
-#     list_tasks
-#   end
+
+  def volunteers
+    list_volunteers = []
+    volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{self.id()};")
+    volunteers.each() do |volunteer|
+      name = volunteer.fetch("name")
+      project_id = volunteer.fetch("project_id").to_i()
+      id = volunteer.fetch("id").to_i()
+      list_volunteers.push(Volunteer.new({:name => name, :project_id => project_id, :id => id}))
+    end
+    list_volunteers
+  end
 #
 #   def update(attributes)
 #      @name = attributes.fetch(:name)
