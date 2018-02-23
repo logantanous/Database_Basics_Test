@@ -12,9 +12,9 @@ class Volunteer
   #   @id = result.first().fetch("id").to_i()
   # end
 
-  # def ==(another_list)
-  #   self.title().==(another_list.title())
-  # end
+  def ==(another_list)
+    self.name().==(another_list.name())
+  end
   #
   # def self.all
   #   returned_lists = DB.exec("SELECT * FROM projects;")
