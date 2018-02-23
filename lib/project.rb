@@ -25,19 +25,16 @@ class Project
     end
     lists
   end
-#
 
-#
-#
-#   def self.find(id)
-#       found_list = nil
-#       List.all().each() do |list|
-#         if list.id().==(id)
-#           found_list = list
-#         end
-#       end
-#       found_list
-#     end
+  def self.find(id)
+    found_list = nil
+    Project.all().each() do |list|
+      if list.id().==(id)
+        found_list = list
+      end
+    end
+    found_list
+  end
 #
 #   def tasks
 #     list_tasks = []
