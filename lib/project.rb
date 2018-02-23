@@ -15,17 +15,16 @@ class Project
     self.title().==(another_list.title())
   end
 
-#
-#   def self.all
-#     returned_lists = DB.exec("SELECT * FROM lists;")
-#     lists = []
-#     returned_lists.each() do |list|
-#       name = list.fetch("name")
-#       id = list.fetch("id").to_i()
-#       lists.push(List.new({:name => name, :id => id}))
-#     end
-#     lists
-#   end
+  def self.all
+    returned_lists = DB.exec("SELECT * FROM projects;")
+    lists = []
+    returned_lists.each() do |list|
+      title = list.fetch("title")
+      id = list.fetch("id").to_i()
+      lists.push(List.new({:name => name, :id => id}))
+    end
+    lists
+  end
 #
 
 #
