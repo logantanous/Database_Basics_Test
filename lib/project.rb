@@ -11,6 +11,10 @@ class Project
     @id = result.first().fetch("id").to_i()
   end
 
+  def ==(another_list)
+    self.title().==(another_list.title())
+  end
+
 #
 #   def self.all
 #     returned_lists = DB.exec("SELECT * FROM lists;")
@@ -25,9 +29,6 @@ class Project
 #
 
 #
-#   def ==(another_list)
-#     self.name().==(another_list.name()).&(self.id().==(another_list.id()))
-#   end
 #
 #   def self.find(id)
 #       found_list = nil
