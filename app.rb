@@ -22,57 +22,27 @@ post("/project_success") do
   erb(:project_success)
 end
 
-get("/:id") do
+get("/projects/:id") do
   @projects = Project.find(params.fetch("id").to_i())
   erb(:project)
 end
 
 
-get("/:id/edit") do
+get("/projects/:id/edit") do
   @projects = Project.find(params.fetch("id").to_i())
   erb(:edit)
 end
 
-patch("/:id/edit") do
+patch("/projects/:id/edit") do
   title = params.fetch("title")
   @projects = Project.find(params.fetch("id").to_i())
   @projects.update({:title => title})
   erb(:project_success)
 end
 
-# get("/project_success") do
-#   title = params.fetch("title")
-#   @list = Project.find(title)
-#   @task = Project.new({:title => title, :list_id => list_id})
-#   erb(:index)
-# end
-#
-# get("/lists/new") do
-#   erb(:list_form)
-# end
-#
-# get("/lists") do
-#  @lists = List.all()
-#  erb(:lists)
-# end
-#
-# post("/lists") do
-#   name = params.fetch("name")
-#   list = List.new({:name => name, :id => nil})
-#   list.save()
-#   erb(:success)
-# end
-#
-# get("/lists/:id") do
-#   @list = List.find(params.fetch("id").to_i())
-#   erb(:list)
-# end
-#
-# post("/tasks") do
-#   description = params.fetch("description")
-#   list_id = params.fetch("list_id").to_i()
-#   @list = List.find(list_id)
-#   @task = Task.new({:description => description, :list_id => list_id})
-#   @task.save()
-#   erb(:task_success)
-# end
+delete("/projects/:id/edit") do
+  @project = Project.find(params.fetch("id").to_i())
+  @project.delete()
+  @projects = Project.all()
+  erb(:index)
+end
