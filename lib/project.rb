@@ -26,16 +26,6 @@ class Project
     lists
   end
 
-  def self.find(id)
-    found_list = nil
-    Project.all().each() do |list|
-      if list.id().==(id)
-        found_list = list
-      end
-    end
-    found_list
-  end
-
   def volunteers
     list_volunteers = []
     volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{self.id()};")
@@ -59,13 +49,19 @@ class Project
   end
 
   def self.find(id)
-    found_list = nil
-    Project.all().each() do |project|
-      if project.id().==(id)
-        found_list = list
-      end
-    end
-    found_list
+    result = DB.exec("SELECT * FROM projects WHERE id = #{id};")
+    title = result.first().fetch("title")
+    Project.new({:title => title, :id => id})
   end
+
+  # def self.find(id)
+  #   found_list = nil
+  #   Project.all().each() do |project|
+  #     if project.id().==(id)
+  #       found_list = list
+  #     end
+  #   end
+  #   found_list
+  # end
 
 end
