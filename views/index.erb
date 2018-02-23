@@ -5,7 +5,7 @@
 <h3>Here are your Projects:</h3>
   <ul>
     <% @projects.each() do |project| %>
-      <li><%= project.title() %></li>
+      <li><a href="/<%= project.id()%>"><%= project.title() %></a></li>
     <% end %>
   </ul>
 <% else %>

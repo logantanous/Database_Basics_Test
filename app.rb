@@ -17,8 +17,26 @@ end
 
 post("/project_success") do
   title = params.fetch("title")
-  @project = Project.new({:title => title, :id => nil})
-  @project.save()
+  @projects = Project.new({:title => title, :id => nil})
+  @projects.save()
+  erb(:project_success)
+end
+
+get("/:id") do
+  @projects = Project.find(params.fetch("id").to_i())
+  erb(:project)
+end
+
+
+get("/:id/edit") do
+  @projects = Project.find(params.fetch("id").to_i())
+  erb(:edit)
+end
+
+patch("/:id/edit") do
+  title = params.fetch("title")
+  @projects = Project.find(params.fetch("id").to_i())
+  @projects.update({:title => title})
   erb(:project_success)
 end
 
