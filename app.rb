@@ -23,6 +23,13 @@ post("/project_success") do
   erb(:project_success)
 end
 
+post("/volunteer_success") do
+  name = params.fetch("name")
+  @volunteers = Volunteer.new({:name => name, :project_id => nil, :id => nil})
+  @volunteers.save()
+  erb(:volunteer_success)
+end
+
 get("/projects/:id") do
   @projects = Project.find(params.fetch("id").to_i())
   erb(:project)

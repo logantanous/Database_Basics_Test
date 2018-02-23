@@ -15,12 +15,13 @@
 <div class="container">
   <form action="/project_success" method="post">
     <div class="form-group">
-      <label class="form-label" for='name'>Assign a title to your project:</label>
+      <label class="form-label" for='name'>Create a new project:</label>
       <input class="form-control" id='title' name='title' type='text' placeholder="Project Name" autofocus>
       <button type="submit" class="button btn">Create Project</button>
     </div>
   </form>
 </div>
+
 
 <% if @projects.any?() %>
   <% if @volunteers.any?() %>
@@ -31,8 +32,18 @@
       <% end %>
     </ul>
   <% else %>
-    <p>You have no volunteers</p>
+    <p>You have no volunteers. Create one below:</p>
+
   <% end %>
+  <div class="container">
+    <form action="/volunteer_success" method="post">
+      <div class="form-group">
+        <label class="form-label" for='name'>Create a new volunteer:</label>
+        <input class="form-control" id='name' name='name' type='text' placeholder="Volunteer Name" autofocus>
+        <button type="submit" class="button btn">Create Volunteer</button>
+      </div>
+    </form>
+  </div>
 <% else %>
   <p>Volunteers can be added to projects after one exists.<br> Please create one above:</p>
 <% end %>
