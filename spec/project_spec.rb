@@ -14,7 +14,6 @@ describe Project do
       expect(project.id).to eq nil
     end
 
-
     it 'returns the id of the project after saving project' do
       project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
       project.save
@@ -42,6 +41,7 @@ describe Project do
       project2.save
       expect(Project.all).to eq [project1, project2]
     end
+  end
 
   describe '#save' do
     it 'saves a project to the database' do
@@ -82,12 +82,12 @@ describe Project do
     end
   end
 
-  # context '#delete' do
-  #   it 'allows a user to delete a project' do
-  #     project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
-  #     project.save
-  #     project.delete
-  #     expect(Project.all).to eq []
-  #   end
+  context '#delete' do
+    it 'allows a user to delete a project' do
+      project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
+      project.save
+      project.delete
+      expect(Project.all).to eq []
+    end
   end
 end
