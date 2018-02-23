@@ -7,25 +7,26 @@ class Volunteer
     @project_id = attributes.fetch(:project_id)
   end
 
-  # def save
-  #   result = DB.exec("INSERT INTO volunteers (name) VALUES ('#{@name}') RETURNING id;")
-  #   @id = result.first().fetch("id").to_i()
-  # end
+  def save
+    result = DB.exec("INSERT INTO volunteers (name, project_id) VALUES ('#{@name}', '#{@project_id}') RETURNING id;")
+    @id = result.first().fetch("id").to_i()
+  end
 
   def ==(another_list)
     self.name().==(another_list.name())
   end
-  #
-  # def self.all
-  #   returned_lists = DB.exec("SELECT * FROM projects;")
-  #   lists = []
-  #   returned_lists.each() do |list|
-  #     title = list.fetch("title")
-  #     id = list.fetch("id").to_i()
-  #     lists.push(Project.new({:title => title, :id => id}))
-  #   end
-  #   lists
-  # end
+
+  def self.all
+    returned_lists = DB.exec("SELECT * FROM volunteers;")
+    lists = []
+    returned_lists.each() do |list|
+      name = list.fetch("name")
+      id = list.fetch("id").to_i()
+      project_id = list.fetch("project_id").to_i()
+      lists.push(Volunteer.new({:name => name, :id => id, :project_id => project_id}))
+    end
+    lists
+  end
   #
   # def self.find(id)
   #   found_list = nil
