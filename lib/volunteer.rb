@@ -1,6 +1,46 @@
-# class Volunteer
-#   attr_reader(:name, :id)
-#
+class Volunteer
+  attr_reader(:name, :id, :project_id)
+
+  def initialize(attributes)
+    @name = attributes.fetch(:name)
+    @id = attributes.fetch(:id)
+    @project_id = attributes.fetch(:project_id)
+  end
+
+  # def save
+  #   result = DB.exec("INSERT INTO volunteers (name) VALUES ('#{@name}') RETURNING id;")
+  #   @id = result.first().fetch("id").to_i()
+  # end
+
+  # def ==(another_list)
+  #   self.title().==(another_list.title())
+  # end
+  #
+  # def self.all
+  #   returned_lists = DB.exec("SELECT * FROM projects;")
+  #   lists = []
+  #   returned_lists.each() do |list|
+  #     title = list.fetch("title")
+  #     id = list.fetch("id").to_i()
+  #     lists.push(Project.new({:title => title, :id => id}))
+  #   end
+  #   lists
+  # end
+  #
+  # def self.find(id)
+  #   found_list = nil
+  #   Project.all().each() do |list|
+  #     if list.id().==(id)
+  #       found_list = list
+  #     end
+  #   end
+  #   found_list
+  # end
+
+
+
+
+
 #   def initialize(attributes)
 #     @name = attributes.fetch(:name)
 #     @id = attributes.fetch(:id)
@@ -53,4 +93,4 @@
 #      DB.exec("UPDATE lists SET name = '#{@name}' WHERE id = #{@id};")
 #    end
 #
-# end
+end
