@@ -5,6 +5,12 @@ class Project
     @title = attributes.fetch(:title)
     @id = attributes.fetch(:id)
   end
+
+  def save
+    result = DB.exec("INSERT INTO projects (title) VALUES ('#{@title}') RETURNING id;")
+    @id = result.first().fetch("id").to_i()
+  end
+
 #
 #   def self.all
 #     returned_lists = DB.exec("SELECT * FROM lists;")
@@ -17,10 +23,7 @@ class Project
 #     lists
 #   end
 #
-#   def save
-#     result = DB.exec("INSERT INTO lists (name) VALUES ('#{@name}') RETURNING id;")
-#     @id = result.first().fetch("id").to_i()
-#   end
+
 #
 #   def ==(another_list)
 #     self.name().==(another_list.name()).&(self.id().==(another_list.id()))

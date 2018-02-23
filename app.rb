@@ -6,7 +6,7 @@ also_reload("lib/**/*.rb")
 require("pg")
 require("pry")
 
-# # Important Note: When app.rb runs, it is written to use the to_do database. In order for our integration specs to pass, we need to use the to_do_test database. This can be accomplished by temporarily adding DB = PG.connect({:dbname => "to_do_test"}) to our app.rb file (which will need to be changed back to to_do after testing).
+# # Important Note: When app.rb runs, it is written to use the volunteer_tracker database. In order for our integration specs to pass, we need to use the volunteer_tracker_test database. This can be accomplished by temporarily adding DB = PG.connect({:dbname => "to_do_test"}) to our app.rb file (which will need to be changed back to to_do after testing).
 
 DB = PG.connect({:dbname => "volunteer_tracker_test"})
 
