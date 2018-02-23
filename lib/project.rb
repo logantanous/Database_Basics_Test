@@ -21,7 +21,7 @@ class Project
     returned_lists.each() do |list|
       title = list.fetch("title")
       id = list.fetch("id").to_i()
-      lists.push(List.new({:name => name, :id => id}))
+      lists.push(Project.new({:title => title, :id => id}))
     end
     lists
   end
