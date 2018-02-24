@@ -29,6 +29,12 @@ class Volunteer
     lists
   end
 
+  def update(attributes)
+     @name = attributes.fetch(:name)
+     @id = self.id()
+     DB.exec("UPDATE volunteers SET name = '#{@name}' WHERE id = #{@id};")
+   end
+
   def self.find(id)
     found_list = nil
     Volunteer.all().each() do |list|

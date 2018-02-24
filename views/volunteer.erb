@@ -1,8 +1,16 @@
-<h1>Here is your Volunteer:</h1>
+<h1>Volunteer:</h1>
 
 <h3>Name: <%= @volunteers.name() %></h3>
 
-<!-- <h3><br>Currently Volunteering:</h3> -->
+<!--change name to the right thing-->
+<form action="/volunteers/<%= @volunteers.id() %>/edit" method="post">
+  <input name="_method" type="hidden" value="patch">
+
+  <label for="name">Rename your volunteer:</label>
+  <input id="name" name="name" type="text">
+
+  <button type="submit">Update Volunteer</button>
+</form>
 
 <div class="container">
 <a href="/">Home</a>
