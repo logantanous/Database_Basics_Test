@@ -6,7 +6,12 @@
 
 <a href="/projects/<%= @projects.id() %>/edit">Edit Project</a>
 
+<p>Currently volunteering:</p>
 
+<!-- Loop through all those that match this current id right? -->
+
+
+<%= @projects.volunteers%>
 
 <div class="container">
 <a href="/">Home</a>

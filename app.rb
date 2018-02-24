@@ -25,7 +25,8 @@ end
 
 post("/volunteer_success") do
   name = params.fetch("name")
-  @volunteers = Volunteer.new({:name => name, :project_id => nil, :id => nil})
+  project_id = params.fetch("project_id")
+  @volunteers = Volunteer.new({:name => name, :project_id => project_id, :id => nil})
   @volunteers.save()
   erb(:volunteer_success)
 end

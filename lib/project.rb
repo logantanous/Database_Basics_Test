@@ -55,7 +55,16 @@ class Project
   end
 
   def delete
-    DB.exec("DELETE FROM projects WHERE id = #{self.id()};") 
+    DB.exec("DELETE FROM projects WHERE id = #{self.id()};")
+  end
+
+  def volunteers
+    list_volunteers = ""
+    volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{self.id()};")
+    volunteers.each() do |volunteer|
+      list_volunteers = "<a href='../volunteers/#{volunteer['id']}'>#{volunteer['name']}</a><br>#{list_volunteers}"
+    end
+    list_volunteers
   end
 
 end

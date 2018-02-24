@@ -38,8 +38,15 @@
   <div class="container">
     <form action="/volunteer_success" method="post">
       <div class="form-group">
+
         <label class="form-label" for='name'>Create a new volunteer:</label>
         <input class="form-control" id='name' name='name' type='text' placeholder="Volunteer Name" autofocus>
+        <label for="list_id">Select a List</label>
+        <select id='list_id' name='project_id' type='text'>
+          <% @projects.each() do |project| %>
+            <option value="<%= project.id()%>"> <%= project.title() %> </option>
+          <% end %>
+        </select>
         <button type="submit" class="button btn">Create Volunteer</button>
       </div>
     </form>
